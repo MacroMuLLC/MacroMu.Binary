@@ -184,9 +184,9 @@ namespace MacroMu.Binary
                 throw new InvalidEnumArgumentException("Cannot set the double word value when the buffer is shorter than a double word.");
 
             byte[] valueBytes = BitConverter.GetBytes(value);
-            List<byte> newBody = buffer[0..(index - 1)].ToList();
+            List<byte> newBody = buffer[0..(index)].ToList();
             newBody.AddRange(valueBytes);
-            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..]);
+            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..(buffer.Length-1)]);
 
             return newBody.ToArray();
         }
