@@ -10,7 +10,7 @@ namespace MacroMu.Binary.Tests.BitHelper
 {
     public class GetReversedEndianBytesForBytesTests
     {
-        public bool GetBitValues_FromUlong_ActualOutputIsExpected(byte[] numberInput, byte[] expectedOutput)
+        public bool GetBitValues_FromBytes_ActualOutputIsExpected(byte[] numberInput, byte[] expectedOutput)
         {
             /* Arrange */
             byte[] actualOutput;
@@ -25,7 +25,7 @@ namespace MacroMu.Binary.Tests.BitHelper
         }
 
         [Fact]
-        public void Fail_GetBitValuesFromUlongActialOutputIsExpected_MistmatchInputs()
+        public void Fail_GetBitValuesFromBytesActialOutputIsExpected_MistmatchInputs()
         {
             /* Arrange */
             bool actualIsExpected;
@@ -51,14 +51,14 @@ namespace MacroMu.Binary.Tests.BitHelper
             expectedOutput[7] = 7;
 
             /* Act */
-            actualIsExpected = GetBitValues_FromUlong_ActualOutputIsExpected(byteInput, expectedOutput);
+            actualIsExpected = GetBitValues_FromBytes_ActualOutputIsExpected(byteInput, expectedOutput);
 
             /* Assert */
             Assert.False(actualIsExpected);
         }
 
         [Fact]
-        public void Parse_GetBitValues_FromUlong_65280()
+        public void Parse_GetBitValues_FromBytes_65280()
         {
             /* Arrange */
             bool actualIsExpected;
@@ -84,7 +84,7 @@ namespace MacroMu.Binary.Tests.BitHelper
             expectedOutput[7] = 7;
 
             /* Act */
-            actualIsExpected = GetBitValues_FromUlong_ActualOutputIsExpected(byteInput, expectedOutput);
+            actualIsExpected = GetBitValues_FromBytes_ActualOutputIsExpected(byteInput, expectedOutput);
 
             /* Assert */
             Assert.True(actualIsExpected);
