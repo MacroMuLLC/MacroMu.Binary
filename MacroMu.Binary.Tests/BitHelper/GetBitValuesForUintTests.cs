@@ -8,9 +8,9 @@ using Xunit;
 
 namespace MacroMu.Binary.Tests.BitHelper
 {
-    public class GetBitValuesForUshortTests
+    public class GetBitValuesForUintTests
     {
-        public bool GetBitValues_FromUshort_ActualOutputIsExpected(ushort numberInput, bool[][] expectedOutput)
+        public bool GetBitValues_FromUint_ActualOutputIsExpected(uint numberInput, bool[][] expectedOutput)
         {
             /* Arrange */
             bool[][] actualOutput;
@@ -33,58 +33,63 @@ namespace MacroMu.Binary.Tests.BitHelper
         }
 
         [Fact]
-        public void Fail_GetBitValuesFromUshortActialOutputIsExpected_MistmatchInputs()
+        public void Fail_GetBitValuesFromUintActialOutputIsExpected_MistmatchInputs()
         {
             /* Arrange */
             bool actualIsExpected;
 
-            ushort byteInput = 16705;
+            uint byteInput = 16705;
 
-            bool[][] expectedOutput = new bool[2][];
+            bool[][] expectedOutput = new bool[4][];
             expectedOutput[0] = new bool[8] { false, false, false, false, false, false, true, false };
             expectedOutput[1] = new bool[8] { false, false, false, false, false, false, true, false };
+            expectedOutput[2] = new bool[8] { false, false, false, false, false, false, false, false };
+            expectedOutput[3] = new bool[8] { false, false, false, false, false, false, false, false };
 
             /* Act */
-            actualIsExpected = GetBitValues_FromUshort_ActualOutputIsExpected(byteInput, expectedOutput);
+            actualIsExpected = GetBitValues_FromUint_ActualOutputIsExpected(byteInput, expectedOutput);
 
             /* Assert */
             Assert.False(actualIsExpected);
         }
 
         [Fact]
-        public void Parse_GetBitValues_FromUShort_65280()
+        public void Parse_GetBitValues_FromUint_65280()
         {
             /* Arrange */
             bool actualIsExpected;
 
-            ushort byteInput = 65280;
+            uint byteInput = 65280;
 
-            bool[][] expectedOutput = new bool[2][];
+            bool[][] expectedOutput = new bool[4][];
             expectedOutput[0] = new bool[8] { false, false, false, false, false, false, false, false };
             expectedOutput[1] = new bool[8] { true, true, true, true, true, true, true, true };
-
+            expectedOutput[2] = new bool[8] { false, false, false, false, false, false, false, false };
+            expectedOutput[3] = new bool[8] { false, false, false, false, false, false, false, false };
 
             /* Act */
-            actualIsExpected = GetBitValues_FromUshort_ActualOutputIsExpected(byteInput, expectedOutput);
+            actualIsExpected = GetBitValues_FromUint_ActualOutputIsExpected(byteInput, expectedOutput);
 
             /* Assert */
             Assert.True(actualIsExpected);
         }
 
         [Fact]
-        public void Parse_GetBitValues_FromUshort_16705()
+        public void Parse_GetBitValues_FromUint_16705()
         {
             /* Arrange */
             bool actualIsExpected;
 
-            ushort byteInput = 16705;
+            uint byteInput = 16705;
 
-            bool[][] expectedOutput = new bool[2][];
+            bool[][] expectedOutput = new bool[4][];
             expectedOutput[0] = new bool[8] { true, false, false, false, false, false, true, false };
             expectedOutput[1] = new bool[8] { true, false, false, false, false, false, true, false };
+            expectedOutput[2] = new bool[8] { false, false, false, false, false, false, false, false };
+            expectedOutput[3] = new bool[8] { false, false, false, false, false, false, false, false };
 
             /* Act */
-            actualIsExpected = GetBitValues_FromUshort_ActualOutputIsExpected(byteInput, expectedOutput);
+            actualIsExpected = GetBitValues_FromUint_ActualOutputIsExpected(byteInput, expectedOutput);
 
             /* Assert */
             Assert.True(actualIsExpected);
