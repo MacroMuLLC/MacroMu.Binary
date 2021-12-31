@@ -36,8 +36,7 @@ namespace MacroMu.Binary
                 throw new ArgumentOutOfRangeException("0-based index for a bit within the byte must be less than 8 and greater than or equal to 0.");
 
             return (data & (1 << index)) != 0;
-        } 
-
+        }
 
         /// <summary>
         /// Get the value of all bits within a single byte
@@ -152,6 +151,9 @@ namespace MacroMu.Binary
         /// <returns></returns>
         public static byte SetBitValue(this byte data, byte index, bool newValue)
         {
+            if (index >= 8)
+                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 7");
+
             byte newData = data;
 
             // Use inclusive or to set high, XOR if it needs tobe CHANGED to 0
@@ -182,9 +184,9 @@ namespace MacroMu.Binary
                 throw new InvalidEnumArgumentException("Cannot set the double word value when the buffer is shorter than a double word.");
 
             byte[] valueBytes = BitConverter.GetBytes(value);
-            List<byte> newBody = buffer[0..(index - 1)].ToList();
+            List<byte> newBody = buffer[0..(index)].ToList();
             newBody.AddRange(valueBytes);
-            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..]);
+            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..(buffer.Length-1)]);
 
             return newBody.ToArray();
         }
@@ -204,13 +206,13 @@ namespace MacroMu.Binary
                 throw new InvalidEnumArgumentException("Cannot set the word value when the buffer is shorter than a word.");
 
             byte[] valueBytes = BitConverter.GetBytes(value);
-            List<byte> newBody = buffer[0..(index - 1)].ToList();
+            List<byte> newBody = buffer[0..(index)].ToList();
             newBody.AddRange(valueBytes);
-            newBody.AddRange(buffer[(index + sizeof(ushort) - 1)..]);
+            newBody.AddRange(buffer[(index + sizeof(ushort) - 1)..(buffer.Length - 1)]);
 
             return newBody.ToArray();
         }
-    
+
         /// <summary>
         /// Returns a new byte array where the bytes in the array at the index
         /// provided have been replaced with the replacementBytes
@@ -238,41 +240,40 @@ namespace MacroMu.Binary
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this int value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this uint value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this short value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this ushort value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this long value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this ulong value) => BitConverter.GetBytes(value);
-
     }
 }
