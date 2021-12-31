@@ -2,6 +2,34 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <ApplicationIcon>MacroMuLynx.ico</ApplicationIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Company>MacroMu, LLC</Company>
+    <Copyright>Copyright 2021 MacroMu LLC., MIT License applies</Copyright>
+    <PackageIcon>MacroMuLynx_128.png</PackageIcon>
+    <PackageTags>macromu binary bit byte conversion</PackageTags>
+    <RepositoryType></RepositoryType>
+    <PackageReleaseNotes>Initial release with validated unit testing completed.</PackageReleaseNotes>
+    <PackageLicenseFile>C:\Users\bohden.musiel\OneDrive - MacroMu, LLC\Legal\M2L.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Description>This package contains extension methods to assist in working with binary data.
+From a byte, you can read and write individual bits.
+From any unsigned numeric type, you can get the bytes which represent it, as well as an array of all the bit values within those bytes.
+
+This library should be especially helpful when working to serialise data into a binary string, or deserialise a binary string into CLR types.
+</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="MacroMuLynx.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\bohden.musiel\OneDrive - MacroMu, LLC\Marketing\Branding\Logo\MacroMuLynx_128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
