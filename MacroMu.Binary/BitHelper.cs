@@ -5,12 +5,21 @@ using System.Linq;
 
 namespace MacroMu.Binary
 {
+
     /// <summary>
-    /// Enum to classify byte order
+    /// Enum to classify byte order. BitConverter.IsLittleEndian indicates
+    /// if a system is little endian or not. BitHlper.Endianness will return
+    /// that result in the form of this enum.
     /// </summary>
     public enum Endianness
     {
+        /// <summary>
+        /// Stores the least significant byte first in memory
+        /// </summary>
         LittleEndian,
+        /// <summary>
+        /// Stores the most significant byte first in memory
+        /// </summary>
         BigEndian
     };
 
@@ -24,16 +33,16 @@ namespace MacroMu.Binary
         /// </summary>
         public static Endianness Endianness => BitConverter.IsLittleEndian ? Endianness.LittleEndian : Endianness.BigEndian;
 
-        ///// <summary>
-        ///// Get the value of a bit within a single byte
-        ///// </summary>
-        ///// <param name="data">Byte to operate on</param>
-        ///// <param name="index">Zero based index of the bit to check</param>
-        ///// <returns>true if the bit is 1, false if the bit is 0</returns>
+        /// <summary>
+        /// Get the value of a bit within a single byte
+        /// </summary>
+        /// <param name="data">Byte to operate on</param>
+        /// <param name="index">Zero based index of the bit to check</param>
+        /// <returns>true if the bit is 1, false if the bit is 0</returns>
         public static bool GetBitValue(this byte data, byte index)
         {
             if (index >= 8)
-                throw new ArgumentOutOfRangeException("0-based index for a bit within the byte must be less than 8 and greater than or equal to 0.");
+                throw new ArgumentOutOfRangeException(nameof(index), "0-based index for a bit within the byte must be less than 8 and greater than or equal to 0.");
 
             return (data & (1 << index)) != 0;
         }
