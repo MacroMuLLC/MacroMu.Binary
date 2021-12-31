@@ -151,6 +151,9 @@ namespace MacroMu.Binary
         /// <returns></returns>
         public static byte SetBitValue(this byte data, byte index, bool newValue)
         {
+            if (index >= 8)
+                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 7");
+
             byte newData = data;
 
             // Use inclusive or to set high, XOR if it needs tobe CHANGED to 0
