@@ -36,8 +36,7 @@ namespace MacroMu.Binary
                 throw new ArgumentOutOfRangeException("0-based index for a bit within the byte must be less than 8 and greater than or equal to 0.");
 
             return (data & (1 << index)) != 0;
-        } 
-
+        }
 
         /// <summary>
         /// Get the value of all bits within a single byte
@@ -210,7 +209,7 @@ namespace MacroMu.Binary
 
             return newBody.ToArray();
         }
-    
+
         /// <summary>
         /// Returns a new byte array where the bytes in the array at the index
         /// provided have been replaced with the replacementBytes
@@ -238,41 +237,40 @@ namespace MacroMu.Binary
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this int value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this uint value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this short value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this ushort value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this long value) => BitConverter.GetBytes(value);
-        
+
         /// <summary>
         /// Returns the results of BitConverter.GetBytes()
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static byte[] GetBytes(this ulong value) => BitConverter.GetBytes(value);
-
     }
 }

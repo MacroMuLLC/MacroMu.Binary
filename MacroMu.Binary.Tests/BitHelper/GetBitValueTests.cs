@@ -11,10 +11,8 @@ namespace MacroMu.Binary.Tests.BitHelper
 {
     public class GetBitValueTests
     {
-
-
         [Fact]
-        public void GetHighBitValueWithinRange()
+        public void Parse_BitWithinByte_ReturnHigh()
         {
             /* Arrange */
 
@@ -33,7 +31,7 @@ namespace MacroMu.Binary.Tests.BitHelper
         }
 
         [Fact]
-        public void GetLowBitValueWithinRange()
+        public void Parse_BitWithinByte_ReturnLow()
         {
             /* Arrange */
 
@@ -52,29 +50,24 @@ namespace MacroMu.Binary.Tests.BitHelper
         }
 
         [Fact]
-        public void GetBitValueOutOfRange()
+        public void FailParse_BitWithinByte_BitIndexOutOfRange()
         {
-            /* Arrange */
-            bool exceptionThrown = false;
-            byte singleByteData = 0b00000010;
-            byte indexToRead = 8;
-
-            /* Act */
-
-            try
+            Action failParse = new Action(() =>
             {
+                /* Arrange */
+                byte singleByteData = 0b00000010;
+                byte indexToRead = 8;
+
+                /* Act */
+
                 // Bit index 1 is high, and should be true
                 singleByteData.GetBitValue(indexToRead);
-            }
-            catch (ArgumentOutOfRangeException exception)
-            {
-                exceptionThrown = true;
-            }
+            });
 
 
             /* Assert */
 
-            Assert.True(exceptionThrown, "A number greater than or equal to 8 should result in an ArgumentOutOfRangeException");
+            Assert.Throws<ArgumentOutOfRangeException>(failParse);
         }
     }
 }
