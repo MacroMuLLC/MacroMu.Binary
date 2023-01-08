@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace MacroMu.Binary
 {
-
     /// <summary>
     /// Enum to classify byte order. BitConverter.IsLittleEndian indicates
     /// if a system is little endian or not. BitHlper.Endianness will return
@@ -17,6 +16,7 @@ namespace MacroMu.Binary
         /// Stores the least significant byte first in memory
         /// </summary>
         LittleEndian,
+
         /// <summary>
         /// Stores the most significant byte first in memory
         /// </summary>
@@ -102,6 +102,48 @@ namespace MacroMu.Binary
         public static bool[][] GetBitValues(this ulong data) => GetBitValues(BitConverter.GetBytes(data));
 
         /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this int value) => BitConverter.GetBytes(value);
+
+        /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this uint value) => BitConverter.GetBytes(value);
+
+        /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this short value) => BitConverter.GetBytes(value);
+
+        /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this ushort value) => BitConverter.GetBytes(value);
+
+        /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this long value) => BitConverter.GetBytes(value);
+
+        /// <summary>
+        /// Returns the results of BitConverter.GetBytes()
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this ulong value) => BitConverter.GetBytes(value);
+
+        /// <summary>
         /// Returns the byte array representation of the value, but with the byte order of the provided data reversed
         /// </summary>
         /// <param name="data"></param>
@@ -152,6 +194,27 @@ namespace MacroMu.Binary
         }
 
         /// <summary>
+        /// Returns a new byte array where the bytes in the array at the index
+        /// provided have been replaced with the replacementBytes
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="replacementBytes"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static byte[] ReplaceBytes(this byte[] buffer, byte[] replacementBytes, int index)
+        {
+            if (index < 0 || index > buffer.Length - replacementBytes.Length)
+                throw new IndexOutOfRangeException("Index must be greater than or equal to zero, and less than the length of the starting byte array less the length of replacement bytes.");
+
+            byte[] result = new byte[buffer.Length];
+            buffer[0..index].CopyTo(result, 0);
+            replacementBytes.CopyTo(result, index);
+            buffer[(index + replacementBytes.Length)..].CopyTo(result, index + replacementBytes.Length);
+
+            return result;
+        }
+
+        /// <summary>
         /// Returns the resulting byte when the index provided has been set either high or low. Does not mutate the current byte.
         /// </summary>
         /// <param name="data"></param>
@@ -195,7 +258,7 @@ namespace MacroMu.Binary
             byte[] valueBytes = BitConverter.GetBytes(value);
             List<byte> newBody = buffer[0..(index)].ToList();
             newBody.AddRange(valueBytes);
-            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..(buffer.Length-1)]);
+            newBody.AddRange(buffer[(index + sizeof(uint) - 1)..(buffer.Length - 1)]);
 
             return newBody.ToArray();
         }
@@ -221,68 +284,5 @@ namespace MacroMu.Binary
 
             return newBody.ToArray();
         }
-
-        /// <summary>
-        /// Returns a new byte array where the bytes in the array at the index
-        /// provided have been replaced with the replacementBytes
-        /// </summary>
-        /// <param name="buffer"></param>
-        /// <param name="replacementBytes"></param>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public static byte[] ReplaceBytes(this byte[] buffer, byte[] replacementBytes, int index)
-        {
-            if (index < 0 || index > buffer.Length - replacementBytes.Length)
-                throw new IndexOutOfRangeException("Index must be greater than or equal to zero, and less than the length of the starting byte array less the length of replacement bytes.");
-
-            byte[] result = new byte[buffer.Length];
-            buffer[0..index].CopyTo(result, 0);
-            replacementBytes.CopyTo(result, index);
-            buffer[(index + replacementBytes.Length)..].CopyTo(result, index + replacementBytes.Length);
-
-            return result;
-        }
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this int value) => BitConverter.GetBytes(value);
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this uint value) => BitConverter.GetBytes(value);
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this short value) => BitConverter.GetBytes(value);
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this ushort value) => BitConverter.GetBytes(value);
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this long value) => BitConverter.GetBytes(value);
-
-        /// <summary>
-        /// Returns the results of BitConverter.GetBytes()
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static byte[] GetBytes(this ulong value) => BitConverter.GetBytes(value);
     }
 }
