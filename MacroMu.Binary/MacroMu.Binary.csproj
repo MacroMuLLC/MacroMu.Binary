@@ -22,7 +22,7 @@
 
 			This library should be especially helpful when working to serialise data into a binary string, or deserialise a binary string into CLR types.
 		</Description>
-		<PackageLicenseExpression> GPLv3</PackageLicenseExpression>
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup>
