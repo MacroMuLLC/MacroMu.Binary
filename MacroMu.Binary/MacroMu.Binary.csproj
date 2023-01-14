@@ -1,37 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <ApplicationIcon>MacroMuLynx.ico</ApplicationIcon>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Company>MacroMu, LLC</Company>
-    <Copyright>Copyright 2022 MacroMu LLC, GPLv3</Copyright>
-    <PackageIcon>MacroMuLynx_128.png</PackageIcon>
-    <PackageTags>macromu binary bit byte conversion</PackageTags>
-	<PackageProjectUrl>https://github.com/Bohden/MacroMu.Binary</PackageProjectUrl>
-    <RepositoryType></RepositoryType>
-    <PackageReleaseNotes>Initial release with validated unit testing completed.</PackageReleaseNotes>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Description>This package contains extension methods to assist in working with binary data.
-From a byte, you can read and write individual bits.
-From any unsigned numeric type, you can get the bytes which represent it, as well as an array of all the bit values within those bytes.
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<ApplicationIcon>MacroMuLynx.ico</ApplicationIcon>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Company>MacroMu, LLC</Company>
+		<Copyright>Copyright 2022 MacroMu LLC, GPLv3</Copyright>
+		<PackageIcon>MacroMuLynx_128.png</PackageIcon>
+		<PackageTags>macromu binary bit byte conversion</PackageTags>
+		<PackageProjectUrl>https://github.com/Bohden/MacroMu.Binary</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Bohden/MacroMu.Binary</RepositoryUrl>
+		<RepositoryType></RepositoryType>
+		<PackageReleaseNotes>Initial release with validated unit testing completed.</PackageReleaseNotes>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Description>
+			This package contains extension methods to assist in working with binary data.
+			From a byte, you can read and write individual bits.
+			From any unsigned numeric type, you can get the bytes which represent it, as well as an array of all the bit values within those bytes.
 
-This library should be especially helpful when working to serialise data into a binary string, or deserialise a binary string into CLR types.
-</Description>
-    <PackageLicenseExpression>  MS-PL</PackageLicenseExpression>
-  </PropertyGroup>
+			This library should be especially helpful when working to serialise data into a binary string, or deserialise a binary string into CLR types.
+		</Description>
+		<PackageLicenseExpression> GPLv3</PackageLicenseExpression>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="MacroMuLynx.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="MacroMuLynx.ico" />
+	</ItemGroup>
 
 
-  <ItemGroup>
-    <None Update="MacroMuLynx_128.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="MacroMuLynx_128.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>
