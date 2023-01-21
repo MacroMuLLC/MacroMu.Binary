@@ -49,8 +49,8 @@ namespace MacroMu.Binary
         /// <summary>
         /// Returns if the current system operates in Big or Little Endian byte order
         /// </summary>
-        public static Endianness Endianness => BitConverter.IsLittleEndian ? Endianness.LittleEndian : Endianness.BigEndian;
-
+        public static Endianness Endianness { get; set; } = BitConverter.IsLittleEndian ? Endianness.LittleEndian : Endianness.BigEndian;
+        
         /// <summary>
         /// Get the value of a bit within a single byte
         /// </summary>
