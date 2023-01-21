@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<Version>1.0.1</Version>
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<ApplicationIcon>MacroMuLynx.ico</ApplicationIcon>
@@ -13,7 +14,7 @@
 		<PackageProjectUrl>https://github.com/Bohden/MacroMu.Binary</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Bohden/MacroMu.Binary</RepositoryUrl>
 		<RepositoryType></RepositoryType>
-		<PackageReleaseNotes>Initial release with validated unit testing completed.</PackageReleaseNotes>
+		<PackageReleaseNotes>Made endianness settables</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<Description>
 			This package contains extension methods to assist in working with binary data.
