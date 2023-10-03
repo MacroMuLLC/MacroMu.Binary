@@ -12,8 +12,12 @@ namespace MacroMu.Binary.Serialization
     /// <typeparam name="T"></typeparam>
     public class BinarySerializer<T>
     {
-        private BinarySerializationMethod<T> serializationMethod; 
+        private readonly BinarySerializationMethod<T> serializationMethod; 
 
+        /// <summary>
+        /// Creates a BinarySerializer instance with the provided serialization method.
+        /// </summary>
+        /// <param name="serializationMethod"></param>
         public BinarySerializer(BinarySerializationMethod<T> serializationMethod)
         {
             this.serializationMethod = serializationMethod;
@@ -29,7 +33,5 @@ namespace MacroMu.Binary.Serialization
         {
             return serializationMethod(obj);
         }
-
-        
     }
 }

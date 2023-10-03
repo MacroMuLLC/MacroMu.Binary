@@ -12,8 +12,12 @@ namespace MacroMu.Binary.Serialization
     /// <typeparam name="T"></typeparam>
     public class BinaryDeserializer<T>
     {
-        private BinaryDeserializationMethod<T> deserializationMethod; 
+        private readonly BinaryDeserializationMethod<T> deserializationMethod; 
 
+        /// <summary>
+        /// Creates a BinaryDeserializer using the provided deserialization method.
+        /// </summary>
+        /// <param name="deserializationMethod"></param>
         public BinaryDeserializer(BinaryDeserializationMethod<T> deserializationMethod)
         {
             this.deserializationMethod = deserializationMethod;
