@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<ApplicationIcon>MacroMuLynx.ico</ApplicationIcon>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Company>MacroMu, LLC</Company>
-		<Copyright>Copyright 2022 MacroMu LLC, GPLv3</Copyright>
+		<Copyright>Copyright 2023 MacroMu LLC, GPLv3</Copyright>
 		<PackageIcon>MacroMuLynx_128.png</PackageIcon>
 		<PackageTags>macromu binary bit byte conversion</PackageTags>
 		<PackageProjectUrl>https://github.com/Bohden/MacroMu.Binary</PackageProjectUrl>
